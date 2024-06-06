@@ -1,14 +1,14 @@
-import { format, isPast } from "date-fns";
-import { motion } from "framer-motion";
-import toast from "react-hot-toast";
-import React, { useEffect, useState } from "react";
-import { MdDelete, MdEdit } from "react-icons/md";
-import { useDispatch } from "react-redux";
-import { deleteTodo, updateTodo } from "../slices/todoSlice";
-import styles from "../styles/modules/todoItem.module.scss";
-import { getClasses } from "../utils/getClasses";
-import CheckButton from "./CheckButton";
-import TodoModal from "./TodoModal";
+import { format, isPast } from 'date-fns';
+import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
+import React, { useEffect, useState } from 'react';
+import { MdDelete, MdEdit } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
+import { deleteTodo, updateTodo } from '../slices/todoSlice';
+import styles from '../styles/modules/todoItem.module.scss';
+import { getClasses } from '../utils/getClasses';
+import CheckButton from './CheckButton';
+import TodoModal from './TodoModal';
 
 const child = {
   hidden: { y: 20, opacity: 0 },
@@ -24,7 +24,7 @@ function TodoItem({ todo }) {
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
 
   useEffect(() => {
-    if (todo.status === "complete") {
+    if (todo.status === 'complete') {
       setChecked(true);
     } else {
       setChecked(false);
@@ -34,13 +34,13 @@ function TodoItem({ todo }) {
   const handleCheck = () => {
     setChecked(!checked);
     dispatch(
-      updateTodo({ ...todo, status: checked ? "incomplete" : "complete" }),
+      updateTodo({ ...todo, status: checked ? 'incomplete' : 'complete' })
     );
   };
 
   const handleDelete = () => {
     dispatch(deleteTodo(todo.id));
-    toast.success("Todo Deleted Successfully");
+    toast.success('Todo Deleted Successfully');
   };
 
   const handleUpdate = () => {
@@ -49,7 +49,7 @@ function TodoItem({ todo }) {
 
   const getTodoItemClass = () => {
     if (todo.dueDate && isPast(new Date(todo.dueDate))) {
-      return todo.status === "complete"
+      return todo.status === 'complete'
         ? styles.todoItemComplete
         : styles.todoItemOverdue;
     }
@@ -65,19 +65,19 @@ function TodoItem({ todo }) {
             <p
               className={getClasses([
                 styles.todoText,
-                todo.status === "complete" && styles["todoText--completed"],
+                todo.status === 'complete' && styles['todoText--completed'],
               ])}
             >
               {todo.title}
             </p>
-            <p className={styles.time}>
-              {format(new Date(todo.time), "p, dd/MM/yyyy")}
-            </p>
             {todo.dueDate && (
               <p className={styles.dueDate}>
-                Due: {format(new Date(todo.dueDate), "dd/MM/yyyy")}
+                Added: {format(new Date(todo.dueDate), 'dd/MM/yyyy')}
               </p>
             )}
+            <p className={styles.time}>
+              Due: {format(new Date(todo.time), 'p, dd/MM/yyyy')}
+            </p>
           </div>
         </div>
         <div className={styles.todoActions}>
