@@ -85,3 +85,15 @@
     background-color: var(--gray-2);
   }
 }
+
+.todoItem {
+  // istniejące style
+}
+
+.todoItemOverdue {
+  background-color: #f79794;
+}
+
+.todoItemComplete {
+  background-color: gray;
+}

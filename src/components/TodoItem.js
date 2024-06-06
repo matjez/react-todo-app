@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format, isPast } from "date-fns";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import React, { useEffect, useState } from "react";
@@ -47,9 +47,18 @@ function TodoItem({ todo }) {
     setUpdateModalOpen(true);
   };
 
+  const getTodoItemClass = () => {
+    if (todo.dueDate && isPast(new Date(todo.dueDate))) {
+      return todo.status === "complete"
+        ? styles.todoItemComplete
+        : styles.todoItemOverdue;
+    }
+    return styles.todoItem;
+  };
+
   return (
     <>
-      <motion.div className={styles.item} variants={child}>
+      <motion.div className={getTodoItemClass()} variants={child}>
         <div className={styles.todoDetails}>
           <CheckButton checked={checked} handleCheck={handleCheck} />
           <div className={styles.texts}>
@@ -62,11 +71,11 @@ function TodoItem({ todo }) {
               {todo.title}
             </p>
             <p className={styles.time}>
-              {format(new Date(todo.time), "p, MM/dd/yyyy")}
+              {format(new Date(todo.time), "p, dd/MM/yyyy")}
             </p>
             {todo.dueDate && (
               <p className={styles.dueDate}>
-                Due: {format(new Date(todo.dueDate), "MM/dd/yyyy")}
+                Due: {format(new Date(todo.dueDate), "dd/MM/yyyy")}
               </p>
             )}
           </div>

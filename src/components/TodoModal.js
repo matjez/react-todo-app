@@ -61,7 +61,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
             id: uuid(),
             title,
             status,
-            time: format(new Date(), "p, MM/dd/yyyy"),
+            time: format(new Date(), "p, dd/MM/yyyy"),
             dueDate, // Dodaj to
           }),
         );
