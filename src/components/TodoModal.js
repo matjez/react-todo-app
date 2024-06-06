@@ -51,7 +51,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title === '') {
-      toast.error('Please enter a title');
+      toast.error('Proszę wpisać tytuł');
       return;
     }
     if (title && status) {
@@ -61,11 +61,11 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
             id: uuid(),
             title,
             status,
-            time: format(new Date(), 'p, MM/dd/yyyy'),
+            time: format(new Date(), 'p, dd/MM/yyyy'),
             dueDate,
           })
         );
-        toast.success('Task added successfully');
+        toast.success('Zadanie dodane pomyślnie');
       }
       if (type === 'update') {
         if (
@@ -81,9 +81,9 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
               dueDate,
             })
           );
-          toast.success('Task Updated successfully');
+          toast.success('Zadanie zaktualizowane pomyślnie');
         } else {
-          toast.error('No changes made');
+          toast.error('Brak wprowadzonych zmian');
           return;
         }
       }
@@ -122,10 +122,10 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
 
             <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
               <h1 className={styles.formTitle}>
-                {type === 'add' ? 'Add' : 'Update'} TODO
+                {type === 'add' ? 'Dodaj' : 'Aktualizuj'} zadanie
               </h1>
               <label htmlFor="title">
-                Title
+                Tytuł
                 <input
                   type="text"
                   id="title"
@@ -134,7 +134,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                 />
               </label>
               <label htmlFor="dueDate">
-                Due Date
+                Data zakończenia
                 <input
                   type="date"
                   id="dueDate"
@@ -149,16 +149,16 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                 >
-                  <option value="incomplete">Incomplete</option>
-                  <option value="complete">Completed</option>
+                  <option value="incomplete">Nieukończone</option>
+                  <option value="complete">Ukończone</option>
                 </select>
               </label>
               <div className={styles.buttonContainer}>
                 <Button type="submit" variant="primary">
-                  {type === 'add' ? 'Add Task' : 'Update Task'}
+                  {type === 'add' ? 'Dodaj zadanie' : 'Zaktualizuj zadanie'}
                 </Button>
                 <Button variant="secondary" onClick={() => setModalOpen(false)}>
-                  Cancel
+                  Anuluj
                 </Button>
               </div>
             </form>

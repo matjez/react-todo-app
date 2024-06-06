@@ -1,9 +1,8 @@
-// AppContent.js
-import { AnimatePresence, motion } from "framer-motion";
-import React from "react";
-import { useSelector } from "react-redux";
-import styles from "../styles/modules/app.module.scss";
-import TodoItem from "./TodoItem";
+import { AnimatePresence, motion } from 'framer-motion';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import styles from '../styles/modules/app.module.scss';
+import TodoItem from './TodoItem';
 
 const container = {
   hidden: { opacity: 1 },
@@ -36,7 +35,7 @@ function AppContent() {
   });
 
   const filteredTodoList = sortedTodoList.filter((item) => {
-    if (filterStatus === "all") {
+    if (filterStatus === 'all') {
       return true;
     }
     return item.status === filterStatus;
@@ -56,7 +55,7 @@ function AppContent() {
           ))
         ) : (
           <motion.p variants={child} className={styles.emptyText}>
-            No Todos
+            Brak zadań
           </motion.p>
         )}
       </AnimatePresence>

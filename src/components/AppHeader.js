@@ -26,20 +26,20 @@ function AppHeader() {
   return (
     <div className={styles.appHeader}>
       <Button variant="primary" onClick={() => setModalOpen(true)}>
-        Add Task
+        Dodaj zadanie
       </Button>
       <SelectButton
         id="status"
         onChange={(e) => updateFilter(e)}
         value={filterStatus}
       >
-        <option value="all">All</option>
-        <option value="incomplete">Incomplete</option>
-        <option value="complete">Completed</option>
+        <option value="all">Wszystkie</option>
+        <option value="incomplete">Nieukończone</option>
+        <option value="complete">Ukończone</option>
       </SelectButton>
       <SelectButton id="sortType" onChange={handleSortChange} value={sortType}>
-        <option value="dateAdded">Date Added</option>
-        <option value="dueDate">Due Date</option>
+        <option value="dateAdded">Data dodania</option>
+        <option value="dueDate">Data zakończenia</option>
       </SelectButton>
       <TodoModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </div>

@@ -40,7 +40,7 @@ function TodoItem({ todo }) {
 
   const handleDelete = () => {
     dispatch(deleteTodo(todo.id));
-    toast.success('Todo Deleted Successfully');
+    toast.success('Zadanie usunięte pomyślnie');
   };
 
   const handleUpdate = () => {
@@ -72,11 +72,11 @@ function TodoItem({ todo }) {
             </p>
             {todo.dueDate && (
               <p className={styles.dueDate}>
-                Added: {format(new Date(todo.dueDate), 'dd/MM/yyyy')}
+                Dodano: {format(new Date(todo.dueDate), 'dd/MM/yyyy')}
               </p>
             )}
             <p className={styles.time}>
-              Due: {format(new Date(todo.time), 'p, dd/MM/yyyy')}
+              Zakończenie: {format(new Date(todo.time), 'p, dd/MM/yyyy')}
             </p>
           </div>
         </div>
