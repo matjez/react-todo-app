@@ -40,7 +40,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
     if (type === 'update' && todo) {
       setTitle(todo.title);
       setStatus(todo.status);
-      setDueDate(todo.dueDate || '');
+      setDueDate(todo.dueDate ? todo.dueDate.substring(0, 16) : ''); // Formatowanie daty do datetime-local
     } else {
       setTitle('');
       setStatus('incomplete');
@@ -61,7 +61,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
             id: uuid(),
             title,
             status,
-            time: format(new Date(), 'p, dd/MM/yyyy'),
+            time: new Date().toISOString(),
             dueDate,
           })
         );
@@ -136,7 +136,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
               <label htmlFor="dueDate">
                 Data zakończenia
                 <input
-                  type="date"
+                  type="datetime-local"
                   id="dueDate"
                   value={dueDate}
                   onChange={(e) => setDueDate(e.target.value)}

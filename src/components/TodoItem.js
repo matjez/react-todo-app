@@ -70,14 +70,14 @@ function TodoItem({ todo }) {
             >
               {todo.title}
             </p>
+            <p className={styles.time}>
+              Dodano: {format(new Date(todo.time), 'dd/MM/yyyy HH:mm')}
+            </p>
             {todo.dueDate && (
               <p className={styles.dueDate}>
-                Dodano: {format(new Date(todo.dueDate), 'dd/MM/yyyy')}
+                Zakończenie: {format(new Date(todo.dueDate), 'dd/MM/yyyy HH:mm')}
               </p>
             )}
-            <p className={styles.time}>
-              Zakończenie: {format(new Date(todo.time), 'p, dd/MM/yyyy')}
-            </p>
           </div>
         </div>
         <div className={styles.todoActions}>
