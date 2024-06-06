@@ -87,13 +87,85 @@
 }
 
 .todoItem {
-  // istniejące style
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.todoItem:hover {
+  transform: translateY(-2px);
 }
 
 .todoItemOverdue {
-  background-color: #f79794;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  background-color: rgba(255, 0, 0, 0.1); /* light red */
+  border-left: 4px solid red;
 }
 
 .todoItemComplete {
-  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: rgba(128, 128, 128, 0.1); /* light gray */
+  border-left: 4px solid gray;
+}
+
+.todoDetails {
+  display: flex;
+  align-items: center;
+}
+
+.todoText {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.todoText--completed {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.time, .dueDate {
+  font-size: 14px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.todoActions {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 20px;
+  color: #888;
+  cursor: pointer;
+  margin-left: 16px;
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #000;
 }
