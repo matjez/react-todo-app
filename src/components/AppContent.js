@@ -1,3 +1,4 @@
+// AppContent.js
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -25,10 +26,10 @@ const child = {
 function AppContent() {
   const todoList = useSelector((state) => state.todo.todoList);
   const filterStatus = useSelector((state) => state.todo.filterStatus);
+  const sortType = useSelector((state) => state.todo.sortType);
 
-  const sortedTodoList = [...todoList];
-  sortedTodoList.sort((a, b) => {
-    if (a.dueDate && b.dueDate) {
+  const sortedTodoList = [...todoList].sort((a, b) => {
+    if (sortType === 'dueDate') {
       return new Date(a.dueDate) - new Date(b.dueDate);
     }
     return new Date(b.time) - new Date(a.time);
@@ -51,9 +52,7 @@ function AppContent() {
       <AnimatePresence>
         {filteredTodoList && filteredTodoList.length > 0 ? (
           filteredTodoList.map((todo) => (
-            // <motion.div key={todo.id} variants={child}>
             <TodoItem key={todo.id} todo={todo} />
-            // </motion.div>
           ))
         ) : (
           <motion.p variants={child} className={styles.emptyText}>

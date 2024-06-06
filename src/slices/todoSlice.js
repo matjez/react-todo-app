@@ -1,18 +1,18 @@
+// todoSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const getInitialTodo = () => {
-  // getting todo list
   const localTodoList = window.localStorage.getItem("todoList");
-  // if todo list is not empty
   if (localTodoList) {
     return JSON.parse(localTodoList);
   }
-  window.localStorage.setItem("todoList", []);
+  window.localStorage.setItem("todoList", JSON.stringify([]));
   return [];
 };
 
 const initialValue = {
   filterStatus: "all",
+  sortType: "dateAdded",
   todoList: getInitialTodo(),
 };
 
@@ -36,7 +36,7 @@ export const todoSlice = createSlice({
             {
               ...action.payload,
             },
-          ]),
+          ])
         );
       }
     },
@@ -48,6 +48,7 @@ export const todoSlice = createSlice({
           if (todo.id === action.payload.id) {
             todo.status = action.payload.status;
             todo.title = action.payload.title;
+            todo.dueDate = action.payload.dueDate;
           }
         });
         window.localStorage.setItem("todoList", JSON.stringify(todoListArr));
@@ -70,9 +71,12 @@ export const todoSlice = createSlice({
     updateFilterStatus: (state, action) => {
       state.filterStatus = action.payload;
     },
+    updateSortType: (state, action) => {
+      state.sortType = action.payload;
+    },
   },
 });
 
-export const { addTodo, updateTodo, deleteTodo, updateFilterStatus } =
+export const { addTodo, updateTodo, deleteTodo, updateFilterStatus, updateSortType } =
   todoSlice.actions;
 export default todoSlice.reducer;
