@@ -1,4 +1,6 @@
 .button {
+  width: auto;
+  min-width: 100px;
   display: inline-block;
   height: auto;
   padding: 0.8rem 2rem;
@@ -10,21 +12,28 @@
   text-transform: capitalize;
   cursor: pointer;
   overflow: hidden;
+
   &__select {
     color: var(--black-2);
     font-family: Poppins;
     padding: 1rem;
     border: none;
     background-color: var(--bg-3);
-
-    width: 150px;
+    width: auto; // Ustawienie szerokości na automatyczną
+    max-width: 100%; // Ustawienie maksymalnej szerokości
     cursor: pointer;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
+
 .button--primary {
   background-color: var(--primaryPurple);
   color: var(--white);
 }
+
 .button--secondary {
   background-color: var(--bg-3);
   color: var(--black-1);

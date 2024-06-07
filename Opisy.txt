@@ -1,0 +1,102 @@
+Poniżej znajduje się opis zawartości każdego z przesłanych plików:
+
+### 1. `todoSlice.js`
+
+Ten plik zawiera kod Redux Slice używany do zarządzania stanem zadań (todo) w aplikacji. Zawiera:
+
+- Import funkcji `createSlice` z `@reduxjs/toolkit`.
+- Funkcję `getInitialTodo`, która odczytuje listę zadań z `localStorage` lub inicjalizuje pustą listę.
+- Początkowy stan, który zawiera:
+  - `filterStatus` - status filtra dla zadań (np. wszystkie, ukończone, nieukończone).
+  - `sortType` - typ sortowania (np. data dodania, data zakończenia).
+  - `todoList` - lista zadań.
+- Slice `todoSlice`, który definiuje akcje i reduktory do dodawania, aktualizowania, usuwania zadań oraz aktualizacji statusu filtra i typu sortowania.
+- Eksport akcji i reduktora.
+
+### 2. `AppHeader.js`
+
+Ten plik zawiera komponent `AppHeader`, który renderuje nagłówek aplikacji. Zawiera:
+
+- Importy wymaganych modułów i stylów.
+- Definicję komponentu `AppHeader`, który:
+  - Używa selektorów `useSelector` do pobierania stanu z Redux Store.
+  - Definiuje lokalny stan za pomocą `useState`.
+  - Definiuje funkcje `updateFilter` i `handleSortChange` do aktualizacji stanu filtra i typu sortowania.
+  - Oblicza liczbę zadań nieukończonych, zakończonych i po czasie.
+  - Renderuje przycisk do dodawania zadań, wybór filtra, wybór typu sortowania oraz modal do dodawania zadań.
+  - Renderuje liczniki zadań.
+
+### 3. `Button.js`
+
+Ten plik zawiera komponenty `Button` i `SelectButton`, które są używane do renderowania przycisków w aplikacji. Zawiera:
+
+- Importy wymaganych modułów i stylów.
+- Definicję komponentu `Button`, który:
+  - Przyjmuje właściwości `type`, `variant`, `children` oraz inne właściwości.
+  - Renderuje przycisk z odpowiednimi stylami.
+- Definicję komponentu `SelectButton`, który:
+  - Renderuje element `<select>` z odpowiednimi stylami.
+- Eksport komponentów.
+
+### 4. `CheckButton.js`
+
+Ten plik zawiera komponent `CheckButton`, który jest używany do renderowania przycisku z animowanym znacznikiem wyboru. Zawiera:
+
+- Importy wymaganych modułów, w tym `framer-motion`.
+- Definicję komponentu `CheckButton`, który:
+  - Przyjmuje właściwości `checked` oraz `handleCheck`.
+  - Używa animacji `framer-motion` do renderowania znacznika wyboru.
+  - Obsługuje kliknięcia, aby zmieniać stan zaznaczenia.
+
+### 5. `PageTitle.js`
+
+Ten plik zawiera komponent `PageTitle`, który jest używany do renderowania tytułu strony. Zawiera:
+
+- Import wymaganych modułów i stylów.
+- Definicję komponentu `PageTitle`, który:
+  - Przyjmuje właściwości `children` oraz inne właściwości.
+  - Renderuje element `<p>` z odpowiednimi stylami.
+- Eksport komponentu.
+
+### 6. `TodoItem.js`
+
+Ten plik zawiera komponent `TodoItem`, który jest używany do renderowania pojedynczego zadania w liście zadań. Zawiera:
+
+- Importy wymaganych modułów, w tym `framer-motion` i ikon.
+- Definicję komponentu `TodoItem`, który:
+  - Przyjmuje właściwość `todo`.
+  - Używa `useDispatch` do wysyłania akcji Redux.
+  - Używa `useState` i `useEffect` do zarządzania stanem zaznaczenia.
+  - Definiuje funkcje `handleCheck`, `handleDelete` i `handleUpdate` do obsługi akcji na zadaniach.
+  - Renderuje szczegóły zadania, przyciski akcji oraz modal do aktualizacji zadań.
+
+### 7. `TodoModal.js`
+
+Ten plik zawiera komponent `TodoModal`, który jest używany do renderowania modala do dodawania i aktualizowania zadań. Zawiera:
+
+- Importy wymaganych modułów, w tym `framer-motion`, `react-hot-toast` i ikon.
+- Definicję komponentu `TodoModal`, który:
+  - Przyjmuje właściwości `type`, `modalOpen`, `setModalOpen`, `todo`.
+  - Używa `useDispatch` do wysyłania akcji Redux.
+  - Używa `useState` i `useEffect` do zarządzania stanem tytułu, statusu i daty zakończenia.
+  - Definiuje funkcję `handleSubmit` do obsługi wysyłania formularza.
+  - Renderuje formularz do dodawania lub aktualizowania zadania.
+
+### 8. `AppContent.js`
+
+Ten plik zawiera komponent `AppContent`, który jest używany do renderowania zawartości aplikacji. Zawiera:
+
+- Importy wymaganych modułów, w tym `framer-motion`.
+- Definicję komponentu `AppContent`, który:
+  - Używa selektorów `useSelector` do pobierania stanu z Redux Store.
+  - Sortuje i filtruje listę zadań w oparciu o stan filtra i typu sortowania.
+  - Renderuje listę zadań za pomocą komponentu `TodoItem` lub tekst informujący o braku zadań.
+
+### 9. `app.module.scss`
+
+Ten plik zawiera style SCSS używane w aplikacji. Zawiera:
+
+- Import mixinów.
+- Style dla różnych klas CSS, takich jak `.app__wrapper`, `.appHeader`, `.content__wrapper`, `.emptyText`, `.counters`, `.controls`, `.overdue`.
+
+Jeśli masz więcej pytań lub potrzebujesz dalszej pomocy, daj mi znać!
